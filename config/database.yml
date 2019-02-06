@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: postgres
+  user: postgres
+
+development:
+  <<: *default
+  database: netshow_development
+
+test:
+  <<: *default
+  database: netshow_test
+
+production:
+  <<: *default
+  database: netshow_production
+  username: netshow
+  password: <%= ENV['NETSHOW_DATABASE_PASSWORD'] %>
