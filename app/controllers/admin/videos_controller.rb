@@ -36,7 +36,7 @@ class Admin::VideosController < ApplicationController
 
   def update
     if @video.update(video_params)
-      redirect_to @video
+      redirect_to admin_videos_path
     else
       render :edit, notice: @video.errors
     end

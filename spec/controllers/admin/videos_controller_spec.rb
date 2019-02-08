@@ -66,17 +66,19 @@ RSpec.describe Admin::VideosController, type: :controller do
       login_user
       context 'destroy own video' do
         let(:video) { create(:video, user: @user) }
+        
         it "returns http success" do
-          get :destroy, params: { id: video.id}
+          delete :destroy, params: { id: video.id}
           expect(response).to have_http_status(302)
         end
+
       end
 
       context 'destroy video of other user' do
         let(:user_1) { create(:user)}
         let(:video) { create(:video, user: user_1) }
         it "returns http forbidden" do
-          get :destroy, params: { id: video.id}
+          delete :destroy, params: { id: video.id}
           expect(response).to have_http_status(:forbidden)
         end
       end
@@ -86,8 +88,9 @@ RSpec.describe Admin::VideosController, type: :controller do
       context 'destroy video of other user' do
         let(:user_1) { create(:user)}
         let(:video) { create(:video, user: user_1) }
+        
         it "returns http forbidden" do
-          get :destroy, params: { id: video.id}
+          delete :destroy, params: { id: video.id }
           expect(response).to have_http_status(302)
         end
       end
@@ -95,17 +98,64 @@ RSpec.describe Admin::VideosController, type: :controller do
   end
 
   describe "GET #create" do
-    it "returns http success" do
-      get :create
-      expect(response).to have_http_status(:success)
+    login_user
+    let(:video_params) { attributes_for(:video) }
+    context 'valid params' do
+      it "add + 1 video on db" do
+        expect do
+          post :create, params: { video: video_params }
+        end.to change { Video.count }.by(1)
+      end
+    end
+
+    context 'invalid params' do
+      login_user
+      let(:video_params) { {foo: :bar} }
+      before { post :create, params: { video: video_params } }
+      it { expect(response).to render_template(:new) }
     end
   end
 
   describe "GET #update" do
-    it "returns http success" do
-      get :update
-      expect(response).to have_http_status(:success)
+    let(:video_params) { attributes_for(:video) }
+    context 'Normal user' do
+      login_user
+      context 'update own video' do
+        let(:video) { create(:video, user: @user) }
+        it "redirect to index" do
+          put :update, params: { id: video.id, video: video_params }
+          expect(response).to redirect_to(admin_videos_path)
+        end
+      end
+
+      context 'update video of other user' do
+        let(:user_1) { create(:user) }
+        let(:video) { create(:video, user: user_1) }
+        it "redirect to index" do
+          put :update, params: { id: video.id, video: video_params }
+          expect(response).to have_http_status(:forbidden)
+        end
+      end
+    end
+
+    context 'Admin user' do
+      login_admin
+      context 'update own video' do
+        let(:video) { create(:video, user: @admin) }
+        it "redirect to index" do
+          put :update, params: { id: video.id, video: video_params }
+          expect(response).to redirect_to(admin_videos_path)
+        end
+      end
+
+      context 'update video of other user' do
+        let(:user_1) { create(:user) }
+        let(:video) { create(:video, user: user_1) }
+        it "redirect to index" do
+          put :update, params: { id: video.id, video: video_params }
+          expect(response).to redirect_to(admin_videos_path)
+        end
+      end
     end
   end
-
 end

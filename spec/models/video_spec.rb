@@ -9,7 +9,7 @@ RSpec.describe Video, type: :model do
     should validate_presence_of(:url)
   end
 
-  it 'is not valid with url extension is diferent of m3u8' do
-    should allow_value('http://www.testem.br').for(:url)
+  it 'valid with url extension is diferent of m3u8' do
+    should allow_value("#{FFaker::InternetSE.http_url}/file.m3u8").for(:url)
   end
 end

@@ -42,7 +42,7 @@ gem 'cancancan'
 
 gem 'devise'
 gem 'rolify', '~> 5.2'
-
+gem 'valid_url'
 
 
 group :development, :test do
