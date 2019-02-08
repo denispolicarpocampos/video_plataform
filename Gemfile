@@ -44,7 +44,6 @@ gem 'devise'
 gem 'rolify', '~> 5.2'
 gem 'valid_url'
 
-
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
