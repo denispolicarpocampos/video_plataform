@@ -1,6 +1,4 @@
-class Admin::VideosController < ApplicationController
-  before_action :authenticate_user!
-  load_and_authorize_resource
+class Admin::VideosController < Admin::ApplicationAdminController
   before_action :set_video, only:[:show, :destroy, :edit, :update]
 
   def index
