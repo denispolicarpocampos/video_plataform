@@ -41,6 +41,8 @@ gem 'will_paginate', '~> 3.1.0'
 gem 'cancancan'
 
 gem 'devise'
+gem 'rolify', '~> 5.2'
+gem 'valid_url'
 
 
 group :development, :test do
@@ -70,6 +72,8 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  gem 'shoulda-matchers', '4.0.0.rc1'
+  gem 'rails-controller-testing' # If you are using Rails 5.x
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
