@@ -12,7 +12,11 @@
 
   <body data-controller="<%= controller.controller_name %>" data-action="<%= controller.action_name %>">
     <div class='cover-container d-flex w-100 h-100 p-3 mx-auto flex-column'>
+      
       <header class='masthead mb-auto'>
+        <% if current_user %>
+          <small class='d-flex justify-content-end'><%=current_user.email%></small>
+        <% end %>
         <%= render 'shared/navbar' %>
       </header>
       <%= yield %>

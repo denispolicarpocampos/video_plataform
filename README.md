@@ -1,24 +1,21 @@
-# README
+# NETSHOW.ME TEST
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Tecnologias
+* [Ruby on Rails]
+* [JavaScript]
+* [PostgreSQL]
+* [Docker]
+* [Docker-Compose]
+* [TDD]
 
-Things you may want to cover:
+## Rodar o projeto
 
-* Ruby version
+Para rodar o projeto é necessário ter o docker e docker compose instalados.
 
-* System dependencies
+- Faça o clone do projeto: https://github.com/denispolicarpocampos/video_plataform.git
+- Na pasta do projeto rode:
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+  1. docker-compose build
+  2. docker-compose run --rm app bundle install
+  2. docker-compose run --rm app bundle exec rake db:create db:migrate
+  3. docker-compose up
