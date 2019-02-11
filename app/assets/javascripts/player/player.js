@@ -31,7 +31,7 @@ $( document ).ready(function() {
         video_click: { video_id: window.location.pathname.split('/')[2] }
       },
       success: function(){
-        $('span.video-count')[0].innerText = parseInt($('span.video-count')[0].innerText) + 1
+        $('span.video-count')[0].innerText = parseInt($('span.video-count').text()) + 1
       }
     });
   });
@@ -43,7 +43,7 @@ $( document ).ready(function() {
       url:"/video_clicks/"+id,
       dataType: 'json',
       success: function(data){
-        $('span.video-count')[0].innerText = data.counter
+        $('span.video-count').text(data.counter)
       }
     });
   }
