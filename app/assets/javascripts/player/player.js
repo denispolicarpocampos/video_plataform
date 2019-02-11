@@ -15,6 +15,7 @@
 //= require bootstrap/dist/js/bootstrap.bundle
 //= require rails-ujs
 //= require activestorage
+//= require video.js/dist/video
 //= require_tree .
 
 $( document ).ready(function() {
