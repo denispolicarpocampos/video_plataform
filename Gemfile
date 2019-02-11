@@ -35,14 +35,14 @@ gem 'jbuilder', '~> 2.5'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
-# Result pagination
-gem 'will_paginate', '~> 3.1.0'
 # Authorization
 gem 'cancancan'
 
 gem 'devise'
 gem 'rolify', '~> 5.2'
 gem 'valid_url'
+gem 'will_paginate-bootstrap4'
+gem 'pg_search'
 
 
 group :development, :test do

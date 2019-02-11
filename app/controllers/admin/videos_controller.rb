@@ -1,10 +1,11 @@
-class Admin::VideosController < ApplicationController
-  before_action :authenticate_user!
-  load_and_authorize_resource
+class Admin::VideosController < Admin::ApplicationAdminController
   before_action :set_video, only:[:show, :destroy, :edit, :update]
 
   def index
-    @videos = Video.paginate(page: params[:page]).order(updated_at: :desc)
+    @videos = Video.includes(:user).
+              where(user_id: current_user.id).
+              paginate(page: params[:page]).
+              order(updated_at: :desc)
   end
 
   def show

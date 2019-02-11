@@ -1,5 +1,9 @@
 {
   "name": "netshow",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "bootstrap": "^4.2.1",
+    "jquery": "^3.3.1",
+    "video.js": "^7.4.1"
+  }
 }

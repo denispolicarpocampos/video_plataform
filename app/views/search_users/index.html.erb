@@ -1,0 +1,18 @@
+<% if @users.present? %>
+  <h3>Resultados encontrados:</h3>
+    <% @users.each do |u| %>
+      <div class="card mb-3 bg-white text-dark">
+        <div class='d-flex justify-content-start p-1'>
+          <%= image_tag("user.svg", class: "card-img-top" ,class: 'w-20') %>
+        </div>
+        <%= link_to playlist_path(u.id), class: 'card-body text-dark font-weight-bold' do %>
+          Usuário: <%= u.email %>
+        <% end %>
+      </div>
+    <% end %>
+  <div class='d-flex justify-content-center pagination'>
+    <%= will_paginate @users, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+  </div>
+<% else %>
+  <h3>Não foram encontrados usuários para este email!</h3>
+<% end %>

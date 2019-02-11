@@ -1,2 +1,44 @@
-<h1>Admin::Videos#index</h1>
-<p>Find me in app/views/admin/videos/index.html.erb</p>
+
+<div class="card-header">
+  <h2>Vídeos</h2>
+</div>
+<div class='add-button'>
+  <%= link_to new_admin_video_path do %>
+    <button type="button" class="btn btn-primary add-button">Adicionar vídeo</button>
+  <%end%>
+</div>
+<div class="card-body">
+  <div class="table-responsive">
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>URL</th>
+          <th>Usuário</th>
+          <th>Ver</th>
+          <th>Editar</th>
+          <th>Excluir</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @videos.each do |v| %>
+          <% if can? :read, v %>
+            <tr>
+              <td><%= v.name %></td>
+              <td><%= v.url.truncate(35) %></td>
+              <td><%= v.user.email %></td>
+              <td><%= link_to "Ver", admin_video_path(v.id) %></td>
+              <td><%= link_to "Editar", edit_admin_video_path(v.id) %></td>
+              <td><%= link_to 'Excluir', admin_video_path(v.id), method: :delete, 
+                              data: { confirm: 'Certeza que deseja deletar?' }	%>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class='d-flex justify-content-center'>
+    <%= will_paginate @videos, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+  </div>
+</div>

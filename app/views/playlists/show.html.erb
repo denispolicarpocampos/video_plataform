@@ -1,0 +1,17 @@
+<h3>Playlist - <%= @user.email%></h3>
+<% if @playlist.present? %>
+  <p>Aqui você encontrará todos os vídeos da playlist do usuário.</p>
+    <% @playlist.each do |p|%>
+      <div class="card mb-3 bg-white text-dark">
+        <%= link_to video_path(p.id), class: 'card-body text-dark font-weight-bold' do %>
+          <%= p.name %>
+        <% end %>
+      </div>
+    <% end %>
+  </ul>
+  <div class='d-flex justify-content-center pagination'>
+    <%= will_paginate @playlist, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+  </div>
+<% else %>
+  <p>Usuário não possui vídeos em sua playlist!</p>
+<% end %>

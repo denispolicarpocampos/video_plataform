@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Netshow</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= yield :head %>
+    <%= javascript_include_tag 'player/player' %>
+
+  </head>
+
+  <body data-controller="<%= controller.controller_name %>" data-action="<%= controller.action_name %>">
+    <div class='cover-container d-flex w-100 h-100 p-3 mx-auto flex-column'>
+      <header class='masthead mb-auto'>
+        <%= render 'shared/navbar' %>
+      </header>
+      <%= yield %>
+      <footer class='mastfoot mt-auto'>
+      </footer>
+    </div>
+  </body>
+</html>
