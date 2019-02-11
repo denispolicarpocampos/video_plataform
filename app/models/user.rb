@@ -1,4 +1,9 @@
 class User < ApplicationRecord
+  include PgSearch
+  pg_search_scope :search_by_email, :against => :email, :using => {
+    :tsearch => {:prefix => true}
+  }
+
   rolify
   after_create :assign_default_role
 

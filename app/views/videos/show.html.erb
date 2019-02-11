@@ -1,0 +1,15 @@
+<h3><%= @video.name %></h3>
+<p>Publicado por: <%= @video.user.email %></p>
+
+<video-js id="my_video_1" class="vjs-default-skin" controls preload="auto" width="640" height="268">
+  <source src="<%= @video.url %>" type="application/x-mpegURL">
+</video-js>
+
+<h3>Visualizado 
+  <strong>
+    <span class='video-count'> 
+
+    </span>
+    vezes
+  </strong>
+</h3>

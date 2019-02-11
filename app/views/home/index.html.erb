@@ -1,7 +1,9 @@
 <main role="main" class="inner cover">
-  <h1 class="cover-heading">Busque por um usuario</h1>
+  <h1 class="cover-heading">Busque por um usuário</h1>
   <p class="lead">Digite o email do usuário para visualizar a sua playlist de videos.</p>
   <p class="lead">
-    <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
+    <%= text_field_tag 'email', nil, class: 'form-control' %>
+    <div class='error-search'></div>
+    <div><button class='search-button btn btn-primary'>Pesquisar</button>
   </p>
 </main>
