@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_07_005134) do
+ActiveRecord::Schema.define(version: 2019_02_09_224356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,13 @@ ActiveRecord::Schema.define(version: 2019_02_07_005134) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  create_table "video_clicks", force: :cascade do |t|
+    t.bigint "video_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["video_id"], name: "index_video_clicks_on_video_id"
+  end
+
   create_table "videos", force: :cascade do |t|
     t.string "name"
     t.string "url"
@@ -54,5 +61,6 @@ ActiveRecord::Schema.define(version: 2019_02_07_005134) do
     t.index ["user_id"], name: "index_videos_on_user_id"
   end
 
+  add_foreign_key "video_clicks", "videos"
   add_foreign_key "videos", "users"
 end
