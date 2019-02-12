@@ -22,7 +22,7 @@ Para rodar o projeto é necessário ter o docker e docker compose instalados.
   5.docker-compose run --rm app bundle exec rake db:seed
   6. docker-compose up
 
-  Email e usuário de admin:
+  Email e usuário de admin (rode o seed primeiro):
 
   email: admin@hotmail.com
   senha: secret123
