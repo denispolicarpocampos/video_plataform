@@ -2,10 +2,16 @@ class Admin::VideosController < Admin::ApplicationAdminController
   before_action :set_video, only:[:show, :destroy, :edit, :update]
 
   def index
-    @videos = Video.includes(:user).
-              where(user_id: current_user.id).
-              paginate(page: params[:page]).
-              order(updated_at: :desc)
+    if current_user.has_role? :admin
+      @videos = Video.includes(:user).
+                paginate(page: params[:page]).
+                order(updated_at: :desc)
+    else
+      @videos = Video.includes(:user).
+                where(user_id: current_user.id).
+                paginate(page: params[:page]).
+                order(updated_at: :desc)
+    end
   end
 
   def show
