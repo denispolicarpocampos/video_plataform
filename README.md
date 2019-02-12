@@ -21,3 +21,8 @@ Para rodar o projeto é necessário ter o docker e docker compose instalados.
   4.docker-compose run --rm app bundle exec rake db:migrate 
   5.docker-compose run --rm app bundle exec rake db:seed
   6. docker-compose up
+
+  Email e usuário de admin:
+
+  email: admin@hotmail.com
+  senha: secret123
