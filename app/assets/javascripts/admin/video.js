@@ -17,22 +17,22 @@ function validationName(name, e){
 function validationUrl(url, e){
   if(url){
     if (url.startsWith("http://") || url.startsWith("https://")){
-      $('.error-url')[0].innerText = ''
+      $('.error-url').text('')
     }else{
       e.preventDefault()
-      $('.error-url')[0].innerText = 'Sua url deve começar com http ou https!'
+      $('.error-url').text('Sua url deve começar com http ou https!')
       return false
     }
 
     if (!url.endsWith('.m3u8')){
       e.preventDefault()
-      $('.error-url')[0].innerText = 'Sua url deve terminar com .m3u8!'
+      $('.error-url').text('Sua url deve terminar com .m3u8!')
       return false
     }else{
-      $('.error-url')[0].innerText = ''
+      $('.error-url').text('')
     }
   }else{
     e.preventDefault()
-    $('.error-url')[0].innerText = 'A url é obrigatória!'
+    $('.error-url').text('A url é obrigatória!')
   }
 }
